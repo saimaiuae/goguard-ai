@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 from flask import Flask, request, jsonify
 from sklearn.preprocessing import StandardScaler
-from .video_processor import process_video
+from backend.video_processor import process_video
 from flask_cors import CORS
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -13,9 +13,8 @@ CORS(app)
 app.config["UPLOAD_FOLDER"] = "uploads"
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
-# Load model and scaler
-model_path = "xgboost_injury_risk.pkl"
-scaler_path = "scaler.pkl"
+model_path = "backend/xgboost_injury_risk.pkl"
+scaler_path = "backend/scaler.pkl"
 
 if not os.path.exists(model_path) or not os.path.exists(scaler_path):
     raise FileNotFoundError("Error: Model or scaler file not found!")
