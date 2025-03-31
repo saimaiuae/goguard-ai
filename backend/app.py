@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 from flask import Flask, request, jsonify
 from sklearn.preprocessing import StandardScaler
-from video_processor import process_video
+from .video_processor import process_video
 from flask_cors import CORS
 
 app = Flask(__name__)
