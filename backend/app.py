@@ -5,6 +5,8 @@ from flask import Flask, request, jsonify
 from sklearn.preprocessing import StandardScaler
 from .video_processor import process_video
 from flask_cors import CORS
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = Flask(__name__)
 CORS(app)
