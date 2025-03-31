@@ -11,12 +11,29 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === "development" && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        // Manual chunking to split vendor code from application code
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            // Group react and react-dom separately
+            if (id.includes("react") || id.includes("react-dom")) {
+              return "react-vendors";
+            }
+            return "vendor";
+          }
+        },
+      },
+    },
+    // Optionally adjust the warning limit for chunk sizes
+    chunkSizeWarningLimit: 1000, // in kB; adjust as needed
   },
 }));
