@@ -19,6 +19,8 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    minify: false,  // Disable minification for debugging
+    sourcemap: true,
     // Optional: adjust the warning limit if needed
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
