@@ -1,24 +1,35 @@
 import os
 import pickle
 import numpy as np
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from sklearn.preprocessing import StandardScaler
-from backend.video_processor import process_video
 from flask_cors import CORS
 import sys
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-app = Flask(__name__)
+try:
+    from backend.video_processor import process_video  
+except ModuleNotFoundError:
+    print("Error: video_processor module not found. Make sure video_processor.py is in the backend folder.")
+    process_video = None
+
+app = Flask(__name__, static_folder="build", template_folder="build")
 CORS(app)
+
+# Upload folder setup
 app.config["UPLOAD_FOLDER"] = "uploads"
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 
-model_path = "backend/xgboost_injury_risk.pkl"
-scaler_path = "backend/scaler.pkl"
+# Model and Scaler paths
+model_path = os.path.join("backend", "xgboost_injury_risk.pkl")
+scaler_path = os.path.join("backend", "scaler.pkl")
 
+# Ensure model and scaler exist
 if not os.path.exists(model_path) or not os.path.exists(scaler_path):
     raise FileNotFoundError("Error: Model or scaler file not found!")
 
+# Load model and scaler
 with open(model_path, "rb") as f:
     injury_model = pickle.load(f)
 
@@ -30,7 +41,7 @@ if not isinstance(scaler, StandardScaler):
 
 @app.route("/", methods=["GET"])
 def home():
-    return "Hello, Flask is running!", 200
+    return send_from_directory(app.template_folder, "index.html")
 
 @app.route("/upload", methods=["POST"])
 def upload_video():
@@ -43,6 +54,9 @@ def upload_video():
 
     file_path = os.path.join(app.config["UPLOAD_FOLDER"], file.filename)
     file.save(file_path)
+
+    if not process_video:
+        return jsonify({"error": "Video processing module not found"}), 500
 
     extracted_players = process_video(file_path)
     if not extracted_players:
@@ -75,6 +89,10 @@ def upload_video():
         "players": extracted_players,
         "highest_risk": highest_risk_player
     })
+
+@app.route("/<path:path>")
+def serve_static_files(path):
+    return send_from_directory(app.static_folder, path)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
