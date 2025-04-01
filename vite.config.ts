@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     // Optional: adjust the warning limit if needed
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         // Manual chunking: separate vendor code based on package name.
