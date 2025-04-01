@@ -19,7 +19,7 @@ except ModuleNotFoundError:
 def create_app():
     # Set absolute path to the build folder
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-    build_dir = os.path.join(root_dir, 'dist')
+    build_dir = os.path.join(root_dir, 'build')
     
     # Initialize Flask app
     app = Flask(__name__, static_folder=build_dir, static_url_path="")
