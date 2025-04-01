@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === "development" && componentTagger(),
+    mode === 'development' && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -19,21 +19,17 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: "build", 
+    // Optional: adjust the warning limit if needed
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        // Manual chunking to split vendor code from application code
+        // Manual chunking: separate vendor code based on package name.
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            // Group react and react-dom separately
-            if (id.includes("react") || id.includes("react-dom")) {
-              return "react-vendors";
-            }
-            return "vendor";
+            return id.toString().split("node_modules/")[1].split("/")[0];
           }
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // Adjust chunk size warning limit
   },
 }));
