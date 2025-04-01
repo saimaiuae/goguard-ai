@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    outDir: "build", 
     rollupOptions: {
       output: {
         // Manual chunking to split vendor code from application code
@@ -33,7 +34,6 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
-    // Optionally adjust the warning limit for chunk sizes
-    chunkSizeWarningLimit: 1000, // in kB; adjust as needed
+    chunkSizeWarningLimit: 1000, // Adjust chunk size warning limit
   },
 }));
