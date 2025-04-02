@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AthleteGuard AI</title>
+    <meta name="description" content="AI-Powered Sports Analytics Platform" />
+    <meta name="author" content="AthleteGuard AI" />
+
+    <link rel="icon" href="/lovable-uploads/8237163e-bd4e-40a5-bade-b7c0ae3ca606.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/lovable-uploads/8237163e-bd4e-40a5-bade-b7c0ae3ca606.png" />
+    <meta property="og:title" content="GoGuard-AI">
+    <meta property="og:url" content="https://www.goguard.ai">
+    
+    <style>
+      /* RTL support for the entire application */
+      body[dir="rtl"] {
+        text-align: right;
+      }
+      
+      body[dir="ltr"] {
+        text-align: left;
+      }
+      
+      /* Fix RTL issues with flex items */
+      body[dir="rtl"] .flex-row {
+        flex-direction: row-reverse;
+      }
+      
+      /* Fix RTL issues with grid elements */
+      body[dir="rtl"] .lg\:grid-cols-3,
+      body[dir="rtl"] .md\:grid-cols-3,
+      body[dir="rtl"] .grid-cols-3,
+      body[dir="rtl"] .lg\:grid-cols-2,
+      body[dir="rtl"] .md\:grid-cols-2,
+      body[dir="rtl"] .grid-cols-2 {
+        direction: rtl;
+      }
+      
+      /* Fix border direction for RTL */
+      body[dir="rtl"] .border-l-4 {
+        border-left: none;
+        border-right: 4px solid;
+      }
+      
+      body[dir="rtl"] .border-l-athlete-blue {
+        border-right-color: var(--athlete-blue);
+      }
+      
+      body[dir="rtl"] .border-l-athlete-orange {
+        border-right-color: var(--athlete-orange);
+      }
+      
+      body[dir="rtl"] .border-l-athlete-purple {
+        border-right-color: var(--athlete-purple);
+      }
+      
+      /* Fix margins and paddings for RTL */
+      body[dir="rtl"] .mr-2 {
+        margin-right: 0;
+        margin-left: 0.5rem;
+      }
+      
+      body[dir="rtl"] .ml-2 {
+        margin-left: 0;
+        margin-right: 0.5rem;
+      }
+      
+      body[dir="rtl"] .pr-2 {
+        padding-right: 0;
+        padding-left: 0.5rem;
+      }
+      
+      body[dir="rtl"] .pl-2 {
+        padding-left: 0;
+        padding-right: 0.5rem;
+      }
+      
+      body[dir="rtl"] .mr-4 {
+        margin-right: 0;
+        margin-left: 1rem;
+      }
+      
+      body[dir="rtl"] .ml-4 {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+      
+      /* RTL fixes for flex gaps */
+      body[dir="rtl"] .gap-2,
+      body[dir="rtl"] .gap-4,
+      body[dir="rtl"] .gap-6,
+      body[dir="rtl"] .gap-8 {
+        direction: rtl;
+      }
+      
+      /* Fix text direction for inputs and buttons */
+      body[dir="rtl"] input,
+      body[dir="rtl"] textarea,
+      body[dir="rtl"] button {
+        direction: rtl;
+      }
+      
+      /* Fix icon placement in RTL mode */
+      body[dir="rtl"] .flex.items-center.gap-2 svg:first-child {
+        margin-left: 0.5rem;
+        margin-right: 0;
+      }
+      
+      /* Fix tabs in RTL mode */
+      body[dir="rtl"] .grid.grid-cols-4 {
+        direction: rtl;
+      }
+      
+      /* Fix recommendation cards in RTL mode */
+      body[dir="rtl"] .neo-panel {
+        border-left: none;
+        border-right: 4px solid;
+        padding-right: 1rem;
+      }
+      
+      /* Fix player stats cards in RTL mode */
+      body[dir="rtl"] .glass-panel .absolute {
+        right: auto;
+        left: -1rem;
+        transform: scaleX(-1);
+      }
+      
+      /* Fix alignment of content in cards for RTL */
+      body[dir="rtl"] .flex.justify-between {
+        flex-direction: row-reverse;
+      }
+      
+      /* Fix specific UI components for RTL */
+      body[dir="rtl"] .TabsTrigger {
+        flex-direction: row-reverse;
+      }
+      
+      body[dir="rtl"] .neo-panel p {
+        text-align: right;
+      }
+      
+      /* Fix dropdowns and menus for RTL */
+      body[dir="rtl"] .dropdown-content {
+        right: 0;
+        left: auto;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-BBXCrIFk.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/eventemitter3-BFZ8r7KD.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-Cdmf7hdX.js">
+    <link rel="modulepreload" crossorigin href="/assets/scheduler-C323NY8X.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-dom-rEn_o0YZ.js">
+    <link rel="modulepreload" crossorigin href="/assets/@floating-ui-DhR8q3Ym.js">
+    <link rel="modulepreload" crossorigin href="/assets/@radix-ui-BpmH30ml.js">
+    <link rel="modulepreload" crossorigin href="/assets/clsx-B-dksMZM.js">
+    <link rel="modulepreload" crossorigin href="/assets/class-variance-authority-Dp3B9jqt.js">
+    <link rel="modulepreload" crossorigin href="/assets/tailwind-merge-Dnoi3Axr.js">
+    <link rel="modulepreload" crossorigin href="/assets/lucide-react-CZn92GfD.js">
+    <link rel="modulepreload" crossorigin href="/assets/next-themes-4bfgbGfp.js">
+    <link rel="modulepreload" crossorigin href="/assets/sonner-B3yhmvp1.js">
+    <link rel="modulepreload" crossorigin href="/assets/@tanstack-B2-cmLKd.js">
+    <link rel="modulepreload" crossorigin href="/assets/@remix-run-DB7wr_-m.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-router-C29bzusV.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-router-dom-DANMNcMT.js">
+    <link rel="modulepreload" crossorigin href="/assets/lodash-BQ3c2uyi.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-is-BpBQ4hf7.js">
+    <link rel="modulepreload" crossorigin href="/assets/prop-types-DVIH8rkB.js">
+    <link rel="modulepreload" crossorigin href="/assets/fast-equals-C7I1S-bJ.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-smooth-1aS-yL-5.js">
+    <link rel="modulepreload" crossorigin href="/assets/tiny-invariant-BaFNuDhB.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-path-CimkQT29.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-shape-nwul2LtV.js">
+    <link rel="modulepreload" crossorigin href="/assets/internmap-BkD7Hj8s.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-array-g_qRI3rN.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-time-g9mLz1m7.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-time-format-j2_s_XYn.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-color-9lF95FHy.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-interpolate-CvRPKVI0.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-format-CzD4bSOQ.js">
+    <link rel="modulepreload" crossorigin href="/assets/d3-scale-DCNNTN8k.js">
+    <link rel="modulepreload" crossorigin href="/assets/victory-vendor-eFgrrWDw.js">
+    <link rel="modulepreload" crossorigin href="/assets/decimal.js-light-ZKFLnszB.js">
+    <link rel="modulepreload" crossorigin href="/assets/recharts-scale-CEDTliZZ.js">
+    <link rel="modulepreload" crossorigin href="/assets/recharts-CjlcCpKm.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Bh_Dawxo.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AthleteGuard AI</title>
+    <meta name="description" content="AI-Powered Sports Analytics Platform" />
+    <meta name="author" content="AthleteGuard AI" />
+
+    <link rel="icon" href="/lovable-uploads/8237163e-bd4e-40a5-bade-b7c0ae3ca606.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/lovable-uploads/8237163e-bd4e-40a5-bade-b7c0ae3ca606.png" />
+    <meta property="og:title" content="GoGuard-AI">
+    <meta property="og:url" content="https://www.goguard.ai">
+    
+    <style>
+      /* RTL support for the entire application */
+      body[dir="rtl"] {
+        text-align: right;
+      }
+      
+      body[dir="ltr"] {
+        text-align: left;
+      }
+      
+      /* Fix RTL issues with flex items */
+      body[dir="rtl"] .flex-row {
+        flex-direction: row-reverse;
+      }
+      
+      /* Fix RTL issues with grid elements */
+      body[dir="rtl"] .lg\:grid-cols-3,
+      body[dir="rtl"] .md\:grid-cols-3,
+      body[dir="rtl"] .grid-cols-3,
+      body[dir="rtl"] .lg\:grid-cols-2,
+      body[dir="rtl"] .md\:grid-cols-2,
+      body[dir="rtl"] .grid-cols-2 {
+        direction: rtl;
+      }
+      
+      /* Fix border direction for RTL */
+      body[dir="rtl"] .border-l-4 {
+        border-left: none;
+        border-right: 4px solid;
+      }
+      
+      body[dir="rtl"] .border-l-athlete-blue {
+        border-right-color: var(--athlete-blue);
+      }
+      
+      body[dir="rtl"] .border-l-athlete-orange {
+        border-right-color: var(--athlete-orange);
+      }
+      
+      body[dir="rtl"] .border-l-athlete-purple {
+        border-right-color: var(--athlete-purple);
+      }
+      
+      /* Fix margins and paddings for RTL */
+      body[dir="rtl"] .mr-2 {
+        margin-right: 0;
+        margin-left: 0.5rem;
+      }
+      
+      body[dir="rtl"] .ml-2 {
+        margin-left: 0;
+        margin-right: 0.5rem;
+      }
+      
+      body[dir="rtl"] .pr-2 {
+        padding-right: 0;
+        padding-left: 0.5rem;
+      }
+      
+      body[dir="rtl"] .pl-2 {
+        padding-left: 0;
+        padding-right: 0.5rem;
+      }
+      
+      body[dir="rtl"] .mr-4 {
+        margin-right: 0;
+        margin-left: 1rem;
+      }
+      
+      body[dir="rtl"] .ml-4 {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+      
+      /* RTL fixes for flex gaps */
+      body[dir="rtl"] .gap-2,
+      body[dir="rtl"] .gap-4,
+      body[dir="rtl"] .gap-6,
+      body[dir="rtl"] .gap-8 {
+        direction: rtl;
+      }
+      
+      /* Fix text direction for inputs and buttons */
+      body[dir="rtl"] input,
+      body[dir="rtl"] textarea,
+      body[dir="rtl"] button {
+        direction: rtl;
+      }
+      
+      /* Fix icon placement in RTL mode */
+      body[dir="rtl"] .flex.items-center.gap-2 svg:first-child {
+        margin-left: 0.5rem;
+        margin-right: 0;
+      }
+      
+      /* Fix tabs in RTL mode */
+      body[dir="rtl"] .grid.grid-cols-4 {
+        direction: rtl;
+      }
+      
+      /* Fix recommendation cards in RTL mode */
+      body[dir="rtl"] .neo-panel {
+        border-left: none;
+        border-right: 4px solid;
+        padding-right: 1rem;
+      }
+      
+      /* Fix player stats cards in RTL mode */
+      body[dir="rtl"] .glass-panel .absolute {
+        right: auto;
+        left: -1rem;
+        transform: scaleX(-1);
+      }
+      
+      /* Fix alignment of content in cards for RTL */
+      body[dir="rtl"] .flex.justify-between {
+        flex-direction: row-reverse;
+      }
+      
+      /* Fix specific UI components for RTL */
+      body[dir="rtl"] .TabsTrigger {
+        flex-direction: row-reverse;
+      }
+      
+      body[dir="rtl"] .neo-panel p {
+        text-align: right;
+      }
+      
+      /* Fix dropdowns and menus for RTL */
+      body[dir="rtl"] .dropdown-content {
+        right: 0;
+        left: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
